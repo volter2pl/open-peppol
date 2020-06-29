@@ -1,0 +1,9 @@
+# composer
+/vendor/
+composer.phar
+
+# Log files
+*.log
+
+# JetBrains IDE
+.idea/

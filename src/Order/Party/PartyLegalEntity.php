@@ -71,14 +71,14 @@ class PartyLegalEntity implements XmlSerializable
 
     /**
      * Buyers legal registration identifier
-     * @param string $companyID Identifies a company as registered with the company registration scheme
-     * @param string $schemeID The identification scheme identifier of the buyer legal registration identifier
+     * @param string|null $companyID Identifies a company as registered with the company registration scheme
+     * @param string|null $schemeID The identification scheme identifier of the buyer legal registration identifier
      * @example "987654321", "0088"
      * @see ISO6523ICD
      * @return self
      * @optional
      */
-    public function setCompanyID($companyID, $schemeID = null)
+    public function setCompanyID($companyID = null, $schemeID = null)
     {
         ISO6523ICD::verify($schemeID);
         $this->companyID = $companyID;
@@ -97,11 +97,11 @@ class PartyLegalEntity implements XmlSerializable
 
     /**
      * Legal address
-     * @param RegistrationAddress $registrationAddress Legal address
+     * @param RegistrationAddress|null $registrationAddress Legal address
      * @return self
      * @optional
      */
-    public function setRegistrationAddress(RegistrationAddress $registrationAddress)
+    public function setRegistrationAddress(RegistrationAddress $registrationAddress = null)
     {
         $this->registrationAddress = $registrationAddress;
         return $this;

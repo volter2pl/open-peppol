@@ -2,7 +2,7 @@
 
 namespace Volter\OpenPeppol\Tests;
 
-use Volter\OpenPeppol\Dict\CurrencyCode;
+use Volter\OpenPeppol\Dict\ISO4217;
 use Volter\OpenPeppol\Dict\EAS;
 use Volter\OpenPeppol\Dict\ISO3166;
 use Volter\OpenPeppol\Dict\ISO6523ICD;
@@ -55,7 +55,7 @@ class OrderTest extends TestCase
         try {
             $success = true;
             $message = 'ok';
-            new \Volter\OpenPeppol\Dict\CurrencyCode();
+            new \Volter\OpenPeppol\Dict\ISO4217();
             new \Volter\OpenPeppol\Dict\EAS();
             new \Volter\OpenPeppol\Dict\ISO3166();
             new \Volter\OpenPeppol\Dict\ISO6523ICD();
@@ -137,16 +137,22 @@ class OrderTest extends TestCase
         $order = (new Order())
             ->setId('0-123')
             ->setIssueDate(new \DateTime())
-            ->setDocumentCurrencyCode(CurrencyCode::PLN)
+            ->setDocumentCurrencyCode(ISO4217::PLN)
             ->setBuyerCustomerParty($buyerCustomerParty)
             ->setSellerSupplierParty($sellerSupplierParty)
             ->setOrderLine($orderLines);
+
+        // Empty optional fields
+        $order
+            ->setNote(null)
+            ->setAdditionalDocumentReferences(null)
+            ->setDelivery(null);
 
 
         // Test created object
         // Use \Volter\OpenPeppol\Generator() to generate an XML string
         $generator = new Generator();
-        $outputXMLString = $generator->order($order);
+        $outputXMLString = $generator->order($order, ISO4217::PLN);
 
         // Create PHP Native DomDocument object, that can be
         // used to validate the generate XML
@@ -379,7 +385,7 @@ class OrderTest extends TestCase
             ->setIssueTime(new \DateTime())
             ->setOrderTypeCode(OrderTypeCode::CONSIGNMENT_ORDER)
             ->setNote('Packages of other sizes are OK')
-            ->setDocumentCurrencyCode(CurrencyCode::PLN)
+            ->setDocumentCurrencyCode(ISO4217::PLN)
             ->setCustomerReference('oik987')
             ->setAccountingCost('1234:45435:243234')
             ->setValidityPeriod(new \DateTime())
@@ -442,7 +448,7 @@ class OrderTest extends TestCase
         // Test created object
         // Use \Volter\OpenPeppol\Generator() to generate an XML string
         $generator = new Generator();
-        $outputXMLString = $generator->order($order);
+        $outputXMLString = $generator->order($order, ISO4217::PLN);
 
         // Create PHP Native DomDocument object, that can be
         // used to validate the generate XML

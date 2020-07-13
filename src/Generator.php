@@ -3,14 +3,18 @@
 namespace Volter\OpenPeppol;
 
 use Sabre\Xml\Service;
-use Volter\OpenPeppol\Dict\CurrencyCode;
 use Volter\OpenPeppol\Order\Order;
 
 class Generator
 {
     public static $currencyID;
 
-    public static function order(Order $order, $currencyId = CurrencyCode::EUR)
+    /**
+     * @param Order $order
+     * @param string $currencyId ISO4217
+     * @return string
+     */
+    public static function order(Order $order, $currencyId)
     {
         self::$currencyID = $currencyId;
 

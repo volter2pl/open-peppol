@@ -4,9 +4,9 @@ namespace Volter\OpenPeppol\Dict;
 
 /**
  * All possible Currency Codes that can be used
- * @see https://test-docs.peppol.eu/poacc/upgrade-3/codelist/ISO4217/
+ * @link https://test-docs.peppol.eu/poacc/upgrade-3/codelist/ISO4217/
  */
-class CurrencyCode
+class ISO4217
 {
     /**
      * UAE Dirham
@@ -892,4 +892,31 @@ class CurrencyCode
      * Zimbabwe Dollar
      */
     const ZWL = 'ZWL';
+
+    public static function verify($code) {
+        if (!in_array($code, [
+            self::AED, self::AFN, self::ALL, self::AMD, self::ANG, self::AOA, self::ARS, self::AUD, self::AWG,
+            self::AZN, self::BAM, self::BBD, self::BDT, self::BGN, self::BHD, self::BIF, self::BMD, self::BND,
+            self::BOB, self::BOV, self::BRL, self::BSD, self::BTN, self::BWP, self::BYN, self::BZD, self::CAD,
+            self::CDF, self::CHE, self::CHF, self::CHW, self::CLF, self::CLP, self::CNY, self::COP, self::COU,
+            self::CRC, self::CUC, self::CUP, self::CVE, self::CZK, self::DJF, self::DKK, self::DOP, self::DZD,
+            self::EGP, self::ERN, self::ETB, self::EUR, self::FJD, self::FKP, self::GBP, self::GEL, self::GHS,
+            self::GIP, self::GMD, self::GNF, self::GTQ, self::GYD, self::HKD, self::HNL, self::HRK, self::HTG,
+            self::HUF, self::IDR, self::ILS, self::INR, self::IQD, self::IRR, self::ISK, self::JMD, self::JOD,
+            self::JPY, self::KES, self::KGS, self::KHR, self::KMF, self::KPW, self::KRW, self::KWD, self::KYD,
+            self::KZT, self::LAK, self::LBP, self::LKR, self::LRD, self::LSL, self::LYD, self::MAD, self::MDL,
+            self::MGA, self::MKD, self::MMK, self::MNT, self::MOP, self::MRU, self::MUR, self::MVR, self::MWK,
+            self::MXN, self::MXV, self::MYR, self::MZN, self::NAD, self::NGN, self::NIO, self::NOK, self::NPR,
+            self::NZD, self::OMR, self::PAB, self::PEN, self::PGK, self::PHP, self::PKR, self::PLN, self::PYG,
+            self::QAR, self::RON, self::RSD, self::RUB, self::RWF, self::SAR, self::SBD, self::SCR, self::SDG,
+            self::SEK, self::SGD, self::SHP, self::SLL, self::SOS, self::SRD, self::SSP, self::STN, self::SVC,
+            self::SYP, self::SZL, self::THB, self::TJS, self::TMT, self::TND, self::TOP, self::TRY_,self::TTD,
+            self::TWD, self::TZS, self::UAH, self::UGX, self::USD, self::USN, self::UYI, self::UYU, self::UZS,
+            self::VEF, self::VND, self::VUV, self::WST, self::XAF, self::XAG, self::XAU, self::XBA, self::XBB,
+            self::XBC, self::XBD, self::XCD, self::XDR, self::XOF, self::XPD, self::XPF, self::XPT, self::XSU,
+            self::XTS, self::XUA, self::YER, self::ZAR, self::ZMW, self::ZWL
+        ])) {
+            throw new \InvalidArgumentException("Currency code must be according to ISO 4217:2005");
+        }
+    }
 }

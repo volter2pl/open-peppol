@@ -122,7 +122,7 @@ class LineItem implements XmlSerializable
      */
     public function setQuantity($quantity, $unitCode)
     {
-        UnitCode::validate($unitCode);
+        UnitCode::verify($unitCode);
         $this->quantity = $quantity;
         $this->unitCode = $unitCode;
         return $this;
@@ -141,14 +141,14 @@ class LineItem implements XmlSerializable
 
     /**
      * Order line amount
-     * @param float $lineExtensionAmount
+     * @param float|null $lineExtensionAmount
      * The total amount for the Line Item, including Allowance Charges but net of taxes.<br>
      * The expected line amount excluding TAX but inclusive of other charges, allowances and taxes.
      * @example 200
      * @return self
      * @optional
      */
-    public function setLineExtensionAmount($lineExtensionAmount)
+    public function setLineExtensionAmount($lineExtensionAmount = null)
     {
         $this->lineExtensionAmount = $lineExtensionAmount;
         return $this;
@@ -167,7 +167,7 @@ class LineItem implements XmlSerializable
 
     /**
      * Partial delivery indicator
-     * @param bool $partialDeliveryIndicator
+     * @param bool|null $partialDeliveryIndicator
      * Indicates if the line items must be delivered in a single shipment.<br>
      * Default is that partial delivery is allowed (true)
      * @example true
@@ -193,11 +193,12 @@ class LineItem implements XmlSerializable
 
     /**
      * Buyers accounting string
-     * @param string $accountingCost The buyer's accounting information applied to the Line Item, expressed as text.
+     * @param string|null $accountingCost
+     * The buyer's accounting information applied to the Line Item, expressed as text.
      * @return self
      * @optional
      */
-    public function setAccountingCost($accountingCost)
+    public function setAccountingCost($accountingCost = null)
     {
         $this->accountingCost = $accountingCost;
         return $this;
@@ -215,11 +216,11 @@ class LineItem implements XmlSerializable
 
     /**
      * Order line requested delivery period
-     * @param RequestedDeliveryPeriod $requestedDeliveryPeriod Requested delivery period for the order line
+     * @param RequestedDeliveryPeriod|null $requestedDeliveryPeriod Requested delivery period for the order line
      * @return self
      * @optional
      */
-    public function setDelivery(RequestedDeliveryPeriod $requestedDeliveryPeriod)
+    public function setDelivery(RequestedDeliveryPeriod $requestedDeliveryPeriod = null)
     {
         $this->requestedDeliveryPeriod = $requestedDeliveryPeriod;
         return $this;
@@ -237,11 +238,11 @@ class LineItem implements XmlSerializable
 
     /**
      * Originator information
-     * @param OriginatorParty $originatorParty Information regarding the originator of the order line
+     * @param OriginatorParty|null $originatorParty Information regarding the originator of the order line
      * @return self
      * @optional
      */
-    public function setOriginatorParty($originatorParty)
+    public function setOriginatorParty($originatorParty = null)
     {
         $this->originatorParty = $originatorParty;
         return $this;
@@ -260,13 +261,13 @@ class LineItem implements XmlSerializable
 
     /**
      * Order line allowance and charges
-     * @param AllowanceCharge[] $allowanceCharges
+     * @param AllowanceCharge[]|null $allowanceCharges
      * A group of business terms providing information about allowances<br>
      * or charges applicable to the individual order line.
      * @return self
      * @optional
      */
-    public function setAllowanceCharges($allowanceCharges)
+    public function setAllowanceCharges($allowanceCharges = null)
     {
         $this->allowanceCharges = $allowanceCharges;
         return $this;
@@ -283,11 +284,11 @@ class LineItem implements XmlSerializable
 
     /**
      * Price information
-     * @param Price $price Price information
+     * @param Price|null $price Price information
      * @return self
      * @optional
      */
-    public function setPrice(Price $price)
+    public function setPrice(Price $price = null)
     {
         $this->price = $price;
         return $this;
@@ -332,7 +333,7 @@ class LineItem implements XmlSerializable
             throw new \InvalidArgumentException("Element 'cbc:Quantity' MUST be provided");
         }
 
-        UnitCode::validate($this->unitCode);
+        UnitCode::verify($this->unitCode);
 
         if (empty($this->item)) {
             throw new \InvalidArgumentException("Element 'cac:Item' MUST be provided");

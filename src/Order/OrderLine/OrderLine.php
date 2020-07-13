@@ -38,14 +38,14 @@ class OrderLine implements XmlSerializable
 
     /**
      * Order line note
-     * @param string $note
+     * @param string|null $note
      * Free-form text applying to the Order Line. This element may contain notes or any other<br>
      * similar information that is not contained explicitly in another structure. Is to capture<br>
      * any free form description related to the order line as a whole.
      * @return self
      * @optional
      */
-    public function setNote($note)
+    public function setNote($note = null)
     {
         $this->note = $note;
         return $this;

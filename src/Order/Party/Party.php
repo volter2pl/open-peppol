@@ -148,8 +148,8 @@ class Party implements XmlSerializable
 
     /**
      * Party identification
-     * @param string $partyIdentification Identification of the invoicee party
-     * @param null $schemeID Scheme identifier for party identification
+     * @param string|null $partyIdentification Identification of the invoicee party
+     * @param string|null $schemeID Scheme identifier for party identification
      * @example "7300010000001", "0088"
      * @see ISO6523ICD
      * @return self
@@ -159,7 +159,7 @@ class Party implements XmlSerializable
      * @optional for AccountingCustomerParty
      * @optional for DeliveryParty
      */
-    public function setPartyIdentification($partyIdentification, $schemeID = null)
+    public function setPartyIdentification($partyIdentification = null, $schemeID = null)
     {
         if ($schemeID !== null) {
             ISO6523ICD::verify($schemeID);
@@ -289,7 +289,7 @@ class Party implements XmlSerializable
 
     /**
      * Contact
-     * @param Contact $contact Invoicee contact information
+     * @param Contact|null $contact Invoicee contact information
      * @return self
      * @optional for BuyerCustomerParty
      * @optional for SellerSupplierParty
@@ -297,7 +297,7 @@ class Party implements XmlSerializable
      * @optional for AccountingCustomerParty
      * @optional for DeliveryParty
      */
-    public function setContact(Contact $contact)
+    public function setContact(Contact $contact = null)
     {
         $this->contact = $contact;
         return $this;

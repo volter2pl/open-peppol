@@ -31,12 +31,14 @@ class UnitCode
 
     /**
      * @param string $code
+     * @return bool
      */
-    public static function validate($code)
+    public static function verify($code)
     {
         if (in_array($code, self::getAll())) {
             throw new \InvalidArgumentException("Value MUST be part of code list UNECERec20");
         }
+        return true;
     }
 
     /**
@@ -45,7 +47,7 @@ class UnitCode
      */
     public static function getNameByCode($code)
     {
-        return self::validate($code)
+        return self::verify($code)
             ? self::getAll()[$code]
             : null;
     }

@@ -2,6 +2,11 @@
 
 namespace Volter\OpenPeppol\Dict;
 
+/**
+ * Class UNCL7161
+ * @package Volter\OpenPeppol\Dict
+ * @link https://docs.peppol.eu/poacc/billing/3.0/codelist/UNCL7161/
+ */
 class UNCL7161
 {
     /**

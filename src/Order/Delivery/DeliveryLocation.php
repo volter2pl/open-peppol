@@ -47,7 +47,7 @@ class DeliveryLocation implements XmlSerializable
 
     /**
      * Delivery location ID
-     * @param string $ID
+     * @param string|null $ID
      * An identifer for the location to where the ordered items should be delivered
      * @param string|null $schemeID
      * Deliver to location identifier identification scheme identifier<br>
@@ -56,7 +56,7 @@ class DeliveryLocation implements XmlSerializable
      * @return self
      * @optional
      */
-    public function setID($ID, $schemeID = null)
+    public function setID($ID = null, $schemeID = null)
     {
         ISO6523ICD::verify($schemeID);
         $this->ID = $ID;
@@ -76,13 +76,13 @@ class DeliveryLocation implements XmlSerializable
 
     /**
      * Delivery location name
-     * @param string $name
+     * @param string|null $name
      * A name of the location to where the ordered items should be delivered
      * @example "South side goods arrival dock"
      * @return self
      * @optional
      */
-    public function setName($name)
+    public function setName($name = null)
     {
         $this->name = $name;
         return $this;
@@ -117,7 +117,7 @@ class DeliveryLocation implements XmlSerializable
      */
     public function validate()
     {
-        if (empty($this->schemeID)) {
+        if (!empty($this->schemeID)) {
             ISO6523ICD::verify($this->schemeID);
         }
 

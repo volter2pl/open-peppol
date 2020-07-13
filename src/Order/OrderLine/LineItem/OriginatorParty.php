@@ -41,14 +41,14 @@ class OriginatorParty implements XmlSerializable
 
     /**
      * Order line originator party ID
-     * @param string $ID The party who originated Order
-     * @param string $schemeID Scheme identifier for party identification
+     * @param string|null $ID The party who originated Order
+     * @param string|null $schemeID Scheme identifier for party identification
      * @example "7300010000001", "0088"
      * @see ISO6523ICD
      * @return self
      * @optional
      */
-    public function setOriginatorParty($ID, $schemeID = null)
+    public function setOriginatorParty($ID = null, $schemeID = null)
     {
         if ($schemeID !== null) {
             ISO6523ICD::verify($schemeID);
@@ -71,12 +71,12 @@ class OriginatorParty implements XmlSerializable
 
     /**
      * Order line originator party name
-     * @param string $name The party who originated Order.
+     * @param string|null $name The party who originated Order.
      * @example "Originator name"
      * @return self
      * @optional
      */
-    public function setName($name)
+    public function setName($name = null)
     {
         $this->name = $name;
         return $this;

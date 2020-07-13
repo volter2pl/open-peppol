@@ -87,7 +87,7 @@ class AllowanceCharge implements XmlSerializable
 
     /**
      * Line level allowance or charge reason code
-     * @param int $allowanceChargeReasonCode
+     * @param int|null $allowanceChargeReasonCode
      * The reason for the line level allowance or charge, expressed as a code.<br>
      * For allowances a subset of codelist UNCL5189 is to be used, and for charges<br>
      * codelist UNCL7161 applies. The Document level allowance reason code and the<br>
@@ -97,7 +97,7 @@ class AllowanceCharge implements XmlSerializable
      * @return self
      * @optional
      */
-    public function setAllowanceChargeReasonCode($allowanceChargeReasonCode)
+    public function setAllowanceChargeReasonCode($allowanceChargeReasonCode = null)
     {
         $this->allowanceChargeReasonCode = $allowanceChargeReasonCode;
         return $this;
@@ -116,14 +116,14 @@ class AllowanceCharge implements XmlSerializable
 
     /**
      * Line level allowance or charge reason
-     * @param string $allowanceChargeReason
+     * @param string|null $allowanceChargeReason
      * The reason for the line level allowance or charge, expressed as text. The Document level allowance<br>
      * reason code and the Document level allowance reason shall indicate the same allowance reason
      * @example "Discount"
      * @return self
      * @optional
      */
-    public function setAllowanceChargeReason($allowanceChargeReason)
+    public function setAllowanceChargeReason($allowanceChargeReason = null)
     {
         $this->allowanceChargeReason = $allowanceChargeReason;
         return $this;
@@ -142,14 +142,14 @@ class AllowanceCharge implements XmlSerializable
 
     /**
      * Line level allowance or charge percentage
-     * @param int $multiplierFactorNumeric
+     * @param int|null $multiplierFactorNumeric
      * The percentage that may be used, in conjunction with the line level allowance base amount,<br>
      * to calculate the line level allowance or charge amount.
      * @example 20
      * @return self
      * @optional
      */
-    public function setMultiplierFactorNumeric($multiplierFactorNumeric)
+    public function setMultiplierFactorNumeric($multiplierFactorNumeric = null)
     {
         $this->multiplierFactorNumeric = $multiplierFactorNumeric;
         return $this;
@@ -192,14 +192,14 @@ class AllowanceCharge implements XmlSerializable
 
     /**
      * Line level allowance or charge base amount
-     * @param double $baseAmount
+     * @param double|null $baseAmount
      * The base amount that may be used, in conjunction with the line level allowance or charge percentage,<br>
      * to calculate the line level allowance or charge amount. Must be rounded to maximum 2 decimals
      * @example 1000
      * @return self
      * @optional
      */
-    public function setBaseAmount($baseAmount)
+    public function setBaseAmount($baseAmount = null)
     {
         $this->baseAmount = $baseAmount;
         return $this;

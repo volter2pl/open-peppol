@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "volter2pl/open-peppol",
     "description": "OpenPeppol XML Generator",
     "type": "library",

@@ -93,14 +93,14 @@ class AnticipatedMonetaryTotal implements XmlSerializable
 
     /**
      * Document total without TAX
-     * @param float $taxExclusiveAmount
+     * @param float|null $taxExclusiveAmount
      * The "Sum of line amounts" plus "sum of allowances on document level" plus "sum of charges on document level".<br>
      * Must be rounded to maximum 2 decimals.
      * @example 200
      * @return self
      * @optional
      */
-    public function setTaxExclusiveAmount($taxExclusiveAmount)
+    public function setTaxExclusiveAmount($taxExclusiveAmount = null)
     {
         $this->taxExclusiveAmount = $taxExclusiveAmount;
         return $this;
@@ -118,12 +118,12 @@ class AnticipatedMonetaryTotal implements XmlSerializable
 
     /**
      * Document total including TAX
-     * @param float $taxInclusiveAmount The total value including TAX. Must be rounded to maximum 2 decimals.
+     * @param float|null $taxInclusiveAmount The total value including TAX. Must be rounded to maximum 2 decimals.
      * @example 200
      * @return self
      * @optional
      */
-    public function setTaxInclusiveAmount($taxInclusiveAmount)
+    public function setTaxInclusiveAmount($taxInclusiveAmount = null)
     {
         $this->taxInclusiveAmount = $taxInclusiveAmount;
         return $this;
@@ -142,14 +142,14 @@ class AnticipatedMonetaryTotal implements XmlSerializable
 
     /**
      * Sum of allowances on document level
-     * @param float $allowanceTotalAmount
+     * @param float|null $allowanceTotalAmount
      * Sum of all allowances on header level in the document. Allowances on line level are included<br>
      * in the line amount and summed up into the "sum of line amounts". Must be rounded to maximum 2 decimals.
      * @example 200
      * @return self
      * @optional
      */
-    public function setAllowanceTotalAmount($allowanceTotalAmount)
+    public function setAllowanceTotalAmount($allowanceTotalAmount = null)
     {
         $this->allowanceTotalAmount = $allowanceTotalAmount;
         return $this;
@@ -168,14 +168,14 @@ class AnticipatedMonetaryTotal implements XmlSerializable
 
     /**
      * Sum of charges on document level
-     * @param float $chargeTotalAmount
+     * @param float|null $chargeTotalAmount
      * Sum of all charge on header level in the document. Charges on line level are included in the line amount<br>
      * and summed up into the "sum of line amounts". Must be rounded to maximum 2 decimals.
      * @example 200
      * @return self
      * @optional
      */
-    public function setChargeTotalAmount($chargeTotalAmount)
+    public function setChargeTotalAmount($chargeTotalAmount = null)
     {
         $this->chargeTotalAmount = $chargeTotalAmount;
         return $this;
@@ -193,12 +193,12 @@ class AnticipatedMonetaryTotal implements XmlSerializable
 
     /**
      * Prepaid amounts
-     * @param float $prepaidAmount Any amounts that have been paid a-priory. Must be rounded to maximum 2 decimals.
+     * @param float|null $prepaidAmount Any amounts that have been paid a-priory. Must be rounded to maximum 2 decimals.
      * @example 200
      * @return self
      * @optional
      */
-    public function setPrepaidAmount($prepaidAmount)
+    public function setPrepaidAmount($prepaidAmount = null)
     {
         $this->prepaidAmount = $prepaidAmount;
         return $this;
@@ -216,13 +216,13 @@ class AnticipatedMonetaryTotal implements XmlSerializable
 
     /**
      * Rounding of document total
-     * @param float $payableRoundingAmount
+     * @param float|null $payableRoundingAmount
      * The amount to be added to the total to round the amount to be paid. Must be rounded to maximum 2 decimals.
      * @example 200
      * @return self
      * @optional
      */
-    public function setPayableRoundingAmount($payableRoundingAmount)
+    public function setPayableRoundingAmount($payableRoundingAmount = null)
     {
         $this->payableRoundingAmount = $payableRoundingAmount;
         return $this;

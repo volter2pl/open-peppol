@@ -2,6 +2,11 @@
 
 namespace Volter\OpenPeppol\Dict;
 
+/**
+ * Class ISO3166
+ * @package Volter\OpenPeppol\Dict
+ * @link https://docs.peppol.eu/poacc/billing/3.0/codelist/ISO3166/
+ */
 class ISO3166
 {
     const ANDORRA = 'AD';

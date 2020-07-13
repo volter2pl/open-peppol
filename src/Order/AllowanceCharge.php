@@ -94,7 +94,7 @@ class AllowanceCharge implements XmlSerializable
 
     /**
      * Document level allowance or charge reason code
-     * @param string $allowanceChargeReasonCode
+     * @param string|null $allowanceChargeReasonCode
      * <b>charge = UNCL7161</b><br>
      * <b>allowances = UNCL5189</b><br>
      * The reason for the document level allowance or charge, expressed as a code. For allowances a subset<br>
@@ -105,7 +105,7 @@ class AllowanceCharge implements XmlSerializable
      * @return self
      * @optional
      */
-    public function setAllowanceChargeReasonCode($allowanceChargeReasonCode)
+    public function setAllowanceChargeReasonCode($allowanceChargeReasonCode = null)
     {
         $this->allowanceChargeReasonCode = $allowanceChargeReasonCode;
         return $this;
@@ -149,14 +149,14 @@ class AllowanceCharge implements XmlSerializable
 
     /**
      * Document level allowance or charge percentage
-     * @param int $multiplierFactorNumeric
+     * @param int|null $multiplierFactorNumeric
      * The percentage that may be used, in conjunction with the document level allowance base amount,<br>
      * to calculate the document level allowance or charge amount. To state 20%, use value 20.
      * @example 20
      * @return self
      * @optional
      */
-    public function setMultiplierFactorNumeric($multiplierFactorNumeric)
+    public function setMultiplierFactorNumeric($multiplierFactorNumeric = null)
     {
         $this->multiplierFactorNumeric = $multiplierFactorNumeric;
         return $this;
@@ -198,13 +198,13 @@ class AllowanceCharge implements XmlSerializable
 
     /**
      * Document level allowance or charge base amount
-     * @param double $baseAmount
+     * @param double|null $baseAmount
      * The base amount that may be used, in conjunction with the document level allowance or charge percentage,<br>
      * to calculate the document level allowance or charge amount. Must be rounded to maximum 2 decimals
      * @return self
      * @optional
      */
-    public function setBaseAmount($baseAmount)
+    public function setBaseAmount($baseAmount = null)
     {
         $this->baseAmount = $baseAmount;
         return $this;
@@ -219,11 +219,11 @@ class AllowanceCharge implements XmlSerializable
     }
 
     /**
-     * @param TaxCategory $taxCategory
+     * @param TaxCategory|null $taxCategory
      * @return self
      * @optional
      */
-    public function setTaxCategory(TaxCategory $taxCategory)
+    public function setTaxCategory(TaxCategory $taxCategory = null)
     {
         $this->taxCategory = $taxCategory;
         return $this;

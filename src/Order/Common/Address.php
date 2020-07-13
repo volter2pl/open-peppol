@@ -64,12 +64,12 @@ class Address implements XmlSerializable
 
     /**
      * Address line 1
-     * @param string $streetName
+     * @param string|null $streetName
      * The main address line in a postal address usually the street name and number.
      * @return self
      * @optional
      */
-    public function setStreetName($streetName)
+    public function setStreetName($streetName = null)
     {
         $this->streetName = $streetName;
         return $this;
@@ -88,13 +88,13 @@ class Address implements XmlSerializable
 
     /**
      * Address line 2
-     * @param string $additionalStreetName
+     * @param string|null $additionalStreetName
      * An additional address line in a postal address that can be used to give further details<br>
      * supplementing the main line. Common use are secondary house number in a complex or in a building.
      * @return self
      * @optional
      */
-    public function setAdditionalStreetName($additionalStreetName)
+    public function setAdditionalStreetName($additionalStreetName = null)
     {
         $this->additionalStreetName = $additionalStreetName;
         return $this;

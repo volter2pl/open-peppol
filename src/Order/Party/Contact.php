@@ -44,11 +44,11 @@ class Contact implements XmlSerializable
 
     /**
      * Contact person name
-     * @param string $name The name of the contact person
+     * @param string|null $name The name of the contact person
      * @return self
      * @optional
      */
-    public function setName($name)
+    public function setName($name = null)
     {
         $this->name = $name;
         return $this;
@@ -66,12 +66,12 @@ class Contact implements XmlSerializable
 
     /**
      * Contact telephone number
-     * @param string $telephone
+     * @param string|null $telephone
      * A phone number for the contact person. If the person has a direct number, this is that number.
      * @return self
      * @optional
      */
-    public function setTelephone($telephone)
+    public function setTelephone($telephone = null)
     {
         $this->telephone = $telephone;
         return $this;
@@ -89,12 +89,12 @@ class Contact implements XmlSerializable
 
     /**
      * Contact email address
-     * @param string $electronicMail
+     * @param string|null $electronicMail
      * The e-mail address for the contact person. If the person has a direct e-mail this is that email.
      * @return self
      * @optional
      */
-    public function setElectronicMail($electronicMail)
+    public function setElectronicMail($electronicMail = null)
     {
         $this->electronicMail = $electronicMail;
         return $this;

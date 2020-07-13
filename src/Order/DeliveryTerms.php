@@ -40,12 +40,12 @@ class DeliveryTerms implements XmlSerializable
 
     /**
      * Delivery terms identifier
-     * @param string $ID Delivery terms identifier, normally Incoterms
+     * @param string|null $ID Delivery terms identifier, normally Incoterms
      * @example "FOB"
      * @return self
      * @optional
      */
-    public function setID($ID)
+    public function setID($ID = null)
     {
         $this->ID = $ID;
         return $this;
@@ -63,11 +63,11 @@ class DeliveryTerms implements XmlSerializable
 
     /**
      * Delivery special terms
-     * @param string $specialTerms A description of special conditions relating to the Delivery Terms
+     * @param string|null $specialTerms A description of special conditions relating to the Delivery Terms
      * @return self
      * @optional
      */
-    public function setSpecialTerms($specialTerms)
+    public function setSpecialTerms($specialTerms = null)
     {
         $this->specialTerms = $specialTerms;
         return $this;
@@ -86,14 +86,14 @@ class DeliveryTerms implements XmlSerializable
 
     /**
      * Delivery terms location
-     * @param string $deliveryLocation
+     * @param string|null $deliveryLocation
      * The location to which the delivery terms refer. Used to qualify
      * the delivery terms e.g. "Terms of delivery are FOB Rotterdam"
      * @example "Rotterdam"
      * @return self
      * @optional
      */
-    public function setDeliveryLocation($deliveryLocation)
+    public function setDeliveryLocation($deliveryLocation = null)
     {
         $this->deliveryLocation = $deliveryLocation;
         return $this;

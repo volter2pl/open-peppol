@@ -75,12 +75,12 @@ class Item implements XmlSerializable
 
     /**
      * Item description
-     * @param string $description
+     * @param string|null $description
      * Free-form field that can be used to give a text description of the item. A detailed description of the item.
      * @return self
      * @optional
      */
-    public function setDescription($description)
+    public function setDescription($description = null)
     {
         $this->description = $description;
         return $this;
@@ -124,14 +124,14 @@ class Item implements XmlSerializable
 
     /**
      * Buyers item identifier
-     * @param string $buyersItemIdentification
+     * @param string|null $buyersItemIdentification
      * An identifier, assigned by the buyer, for the item. Associates the item with<br>
      * its identification according to the buyer's system.
      * @example "abc32432"
      * @return self
      * @optional
      */
-    public function setBuyersItemIdentification($buyersItemIdentification)
+    public function setBuyersItemIdentification($buyersItemIdentification = null)
     {
         $this->buyersItemIdentification = $buyersItemIdentification;
         return $this;
@@ -150,15 +150,14 @@ class Item implements XmlSerializable
 
     /**
      * The Sellers item identifier
-     * @return string
+     * @param string|null $sellersItemIdentification
      * An identifier, assigned by the seller, for the item. Associates the item with<br>
      * its identification according to the seller's system.
      * @example "3249834"
-     * @param string $sellersItemIdentification
      * @return self
      * @optional
      */
-    public function setSellersItemIdentification($sellersItemIdentification)
+    public function setSellersItemIdentification($sellersItemIdentification = null)
     {
         $this->sellersItemIdentification = $sellersItemIdentification;
         return $this;
@@ -177,14 +176,14 @@ class Item implements XmlSerializable
 
     /**
      * Item standard identifier
-     * @param string $standardItemIdentification
+     * @param string|null $standardItemIdentification
      * An item identifier based on a registered scheme. Associates the item with<br>
      * its identification according to a standard system.
      * @example "05704066204093"
      * @return self
      * @optional
      */
-    public function setStandardItemIdentification($standardItemIdentification)
+    public function setStandardItemIdentification($standardItemIdentification = null)
     {
         $this->standardItemIdentification = $standardItemIdentification;
         return $this;
@@ -203,14 +202,14 @@ class Item implements XmlSerializable
 
     /**
      * Item specification reference
-     * @param string[] $itemSpecificationDocumentReferences
+     * @param string[]|null $itemSpecificationDocumentReferences
      * Reference to an external document (ID) when it is necessary to specify the details of the item.<br>
      * Referece to an item specification document
      * @example ["doc4353.pdf"]
      * @return self
      * @optional
      */
-    public function setItemSpecificationDocumentReferences(array $itemSpecificationDocumentReferences)
+    public function setItemSpecificationDocumentReferences(array $itemSpecificationDocumentReferences = null)
     {
         $this->itemSpecificationDocumentReferences = $itemSpecificationDocumentReferences;
         return $this;
@@ -225,11 +224,11 @@ class Item implements XmlSerializable
     }
 
     /**
-     * @param CommodityClassification[] $commodityClassification
+     * @param CommodityClassification[]|null $commodityClassification
      * @return $this
      * @optional
      */
-    public function setCommodityClassifications(array $commodityClassification)
+    public function setCommodityClassifications(array $commodityClassification = null)
     {
         $this->commodityClassification = $commodityClassification;
         return $this;
@@ -246,11 +245,11 @@ class Item implements XmlSerializable
 
     /**
      * Line TAX information
-     * @param ClassifiedTaxCategory $classifiedTaxCategory Line TAX information
+     * @param ClassifiedTaxCategory|null $classifiedTaxCategory Line TAX information
      * @return self
      * @optional
      */
-    public function setClassifiedTaxCategory(ClassifiedTaxCategory $classifiedTaxCategory)
+    public function setClassifiedTaxCategory(ClassifiedTaxCategory $classifiedTaxCategory = null)
     {
         $this->classifiedTaxCategory = $classifiedTaxCategory;
         return $this;
@@ -268,12 +267,12 @@ class Item implements XmlSerializable
 
     /**
      * Additional item property information
-     * @param AdditionalItemProperty[] $additionalItemProperties
+     * @param AdditionalItemProperty[]|null $additionalItemProperties
      * A group of business terms providing information about properties of the goods and services invoiced.
      * @return self
      * @optional
      */
-    public function setAdditionalItemProperties($additionalItemProperties)
+    public function setAdditionalItemProperties($additionalItemProperties = null)
     {
         $this->additionalItemProperties = $additionalItemProperties;
         return $this;

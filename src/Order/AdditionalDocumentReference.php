@@ -64,12 +64,12 @@ class AdditionalDocumentReference implements XmlSerializable
 
     /**
      * Document description
-     * @param string $documentType Textual description of the document.
+     * @param string|null $documentType Textual description of the document.
      * @example "Timesheet"
      * @return self
      * @optional
      */
-    public function setDocumentType($documentType)
+    public function setDocumentType($documentType = null)
     {
         $this->documentType = $documentType;
         return $this;
@@ -85,11 +85,11 @@ class AdditionalDocumentReference implements XmlSerializable
 
     /**
      * Attachment(s)
-     * @param Attachment $attachment Attachment(s)
+     * @param Attachment|null $attachment Attachment(s)
      * @return self
      * @optional
      */
-    public function setAttachment(Attachment $attachment)
+    public function setAttachment(Attachment $attachment = null)
     {
         $this->attachment = $attachment;
         return $this;

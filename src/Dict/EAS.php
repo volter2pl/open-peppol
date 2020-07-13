@@ -50,7 +50,8 @@ class EAS
     const CODE_0097 = '0097';
 
     /**
-     * Vereniging van Kamers van Koophandel en Fabrieken in Nederland (Association of Chambers of Commerce and Industry in the Netherlands), Scheme (EDIRA compliant)
+     * Vereniging van Kamers van Koophandel en Fabrieken in Nederland (Association of Chambers of Commerce and Industry
+     * in the Netherlands), Scheme (EDIRA compliant)
      */
     const CODE_0106 = '0106';
 

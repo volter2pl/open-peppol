@@ -36,12 +36,12 @@ class RequestedDeliveryPeriod implements XmlSerializable
 
     /**
      * Period start date
-     * @param \DateTime $startDate
+     * @param \DateTime|null $startDate
      * The date on which the period starts. The start dates counts as part of the period.Format ="YYYY-MM-DD"
      * @return self
      * @optional
      */
-    public function setStartDate($startDate)
+    public function setStartDate($startDate = null)
     {
         $this->startDate = $startDate;
         return $this;
@@ -59,12 +59,12 @@ class RequestedDeliveryPeriod implements XmlSerializable
 
     /**
      * Period end date
-     * @param \DateTime $endDate
+     * @param \DateTime|null $endDate
      * The date on which the period ends. The end date counts as part of the period.Format ="YYYY-MM-DD"
      * @return self
      * @optional
      */
-    public function setEndDate($endDate)
+    public function setEndDate($endDate = null)
     {
         $this->endDate = $endDate;
         return $this;

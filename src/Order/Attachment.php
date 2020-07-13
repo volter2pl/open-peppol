@@ -47,14 +47,14 @@ class Attachment implements XmlSerializable
 
     /**
      * Attached document
-     * @param string $filePath
+     * @param string|null $filePath
      * The attached document embeded as binary object, coded as Base64.<br>
      * The binary object has two supplementary components: a Mime Code, which specifies the Mime type<br>
      * of the attachment and a Filename that is provided by (or on behalf of) the sender of the document
      * @return self
      * @optional
      */
-    public function setFilePath($filePath)
+    public function setFilePath($filePath = null)
     {
         $this->filePath = $filePath;
         return $this;
@@ -72,13 +72,13 @@ class Attachment implements XmlSerializable
 
     /**
      * External document URI
-     * @param string $uri
+     * @param string|null $uri
      * The Uniform Resource Identifier (URI) that identifies where the external document is located.
      * @example "http://www.test.eu/image.jpg"
      * @return $this
      * @optional
      */
-    public function setExternalReference($uri)
+    public function setExternalReference($uri = null)
     {
         $this->externalReference = $uri;
         return $this;

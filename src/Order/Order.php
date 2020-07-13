@@ -3,7 +3,7 @@
 namespace Volter\OpenPeppol\Order;
 
 use Volter\OpenPeppol\Generator;
-use Volter\OpenPeppol\Dict\CurrencyCode;
+use Volter\OpenPeppol\Dict\ISO4217;
 use Volter\OpenPeppol\Dict\OrderTypeCode;
 use Volter\OpenPeppol\Dict\Schema;
 use Volter\OpenPeppol\Order\Delivery\Delivery;
@@ -69,9 +69,9 @@ class Order implements XmlSerializable
     private $note;
 
     /**
-     * @var CurrencyCode
+     * @var string
      */
-    private $documentCurrencyCode = CurrencyCode::EUR;
+    private $documentCurrencyCode = ISO4217::EUR;
 
     /**
      * @var string
@@ -252,12 +252,12 @@ class Order implements XmlSerializable
 
     /**
      * Sales order reference
-     * @param string $salesOrderId An identifier of a referenced sales order, issued by the Seller
+     * @param string|null $salesOrderId An identifier of a referenced sales order, issued by the Seller
      * @example "112233"
      * @return self
      * @optional
      */
-    public function setSalesOrderID($salesOrderId)
+    public function setSalesOrderID($salesOrderId = null)
     {
         $this->salesOrderId = $salesOrderId;
         return $this;
@@ -297,13 +297,13 @@ class Order implements XmlSerializable
 
     /**
      * Order issue time
-     * @param \DateTime $issueTime The time assigned by the buyer on which the order was issued.
+     * @param \DateTime|null $issueTime The time assigned by the buyer on which the order was issued.
      * @return self
      * @optional
      */
-    public function setIssueTime(\DateTime $issueTime)
+    public function setIssueTime(\DateTime $issueTime = null)
     {
-        $this->issueDate = $issueTime;
+        $this->issueTime = $issueTime;
         return $this;
     }
 
@@ -344,14 +344,14 @@ class Order implements XmlSerializable
 
     /**
      * Document level textual note
-     * @param string $note
+     * @param string|null $note
      * Free form text applying to the Order. This element may contain notes or any other<br>
      * similar information that is not contained explicitly in another structure.
      * @example "Packages of other sizes are OK"
      * @return self
      * @optional
      */
-    public function setNote($note)
+    public function setNote($note = null)
     {
         $this->note = $note;
         return $this;
@@ -370,12 +370,13 @@ class Order implements XmlSerializable
     /**
      * Currency
      * @param string $currencyCode The default currency for the order
-     * @example CurrencyCode::NOK
+     * @example ISO4217::NOK
      * @return self
      * @mandatory
      */
-    public function setDocumentCurrencyCode($currencyCode = CurrencyCode::EUR)
+    public function setDocumentCurrencyCode($currencyCode = ISO4217::EUR)
     {
+        ISO4217::verify($currencyCode);
         $this->documentCurrencyCode = $currencyCode;
         return $this;
     }
@@ -394,7 +395,7 @@ class Order implements XmlSerializable
 
     /**
      * Buyer contact
-     * @param string $customerReference
+     * @param string|null $customerReference
      * The element is used for the reference of who ordered the products/services.<br>
      * Example being the name of the person ordering, employee number or a code<br>
      * identifying this person or department/group. Also known as "Your reference",<br>
@@ -403,7 +404,7 @@ class Order implements XmlSerializable
      * @return self
      * @optional
      */
-    public function setCustomerReference($customerReference)
+    public function setCustomerReference($customerReference = null)
     {
         $this->customerReference = $customerReference;
         return $this;
@@ -422,14 +423,14 @@ class Order implements XmlSerializable
 
     /**
      * Buyers accounting string
-     * @param string $accountingCost
+     * @param string|null $accountingCost
      * Used by the buyer to specify a reference that should be repeated in e.g. invoice to enable the buyer<br>
      * to automatically book e.g. to the right project, or account.
      * @example "1234:45435:243234"
      * @return $this
      * @optional
      */
-    public function setAccountingCost($accountingCost)
+    public function setAccountingCost($accountingCost = null)
     {
         $this->accountingCost = $accountingCost;
         return $this;
@@ -448,14 +449,14 @@ class Order implements XmlSerializable
 
     /**
      * Order validity end date
-     * @param \DateTime $validityPeriodEndDate
+     * @param \DateTime|null $validityPeriodEndDate
      * The end date for when the order is valid. The end date for the time period within<br>
      * which the seller must respond. An order should contain the validity end date
      * @example 2018-06-02
      * @return self
      * @optional
      */
-    public function setValidityPeriod(\DateTime $validityPeriodEndDate)
+    public function setValidityPeriod(\DateTime $validityPeriodEndDate = null)
     {
         $this->validityPeriodEndDate = $validityPeriodEndDate;
         return $this;
@@ -475,14 +476,14 @@ class Order implements XmlSerializable
 
     /**
      * Quotation reference
-     * @param string $quotationDocumentReference
+     * @param string|null $quotationDocumentReference
      * Quotation document reference - a requirement to give a unique<br>
      * reference to the quotation that is the base for the order
      * @example "1232424"
      * @return self
      * @optional
      */
-    public function setQuotationDocumentReference($quotationDocumentReference)
+    public function setQuotationDocumentReference($quotationDocumentReference = null)
     {
         $this->quotationDocumentReference = $quotationDocumentReference;
         return $this;
@@ -500,13 +501,13 @@ class Order implements XmlSerializable
 
     /**
      * Order document reference
-     * @param string $orderDocumentReference
+     * @param string|null $orderDocumentReference
      * Used to reference the initial order that was rejected and a new order is issued
      * @example "4832423"
      * @return self
      * @optional
      */
-    public function setOrderDocumentReference($orderDocumentReference)
+    public function setOrderDocumentReference($orderDocumentReference = null)
     {
         $this->orderDocumentReference = $orderDocumentReference;
         return $this;
@@ -525,14 +526,14 @@ class Order implements XmlSerializable
 
     /**
      * Originator document reference
-     * @param string $originatorDocumentReference
+     * @param string|null $originatorDocumentReference
      * A reference to Originator Document. To be able to give a reference<br>
      * to the internal requisition on the buyer site on which the order is based.
      * @example "5435235"
      * @return self
      * @optional
      */
-    public function setOriginatorDocumentReference($originatorDocumentReference)
+    public function setOriginatorDocumentReference($originatorDocumentReference = null)
     {
         $this->originatorDocumentReference = $originatorDocumentReference;
         return $this;
@@ -549,11 +550,11 @@ class Order implements XmlSerializable
 
     /**
      * Additional documents
-     * @param AdditionalDocumentReference[] $additionalDocumentReferences Additional documents
+     * @param AdditionalDocumentReference[]|null $additionalDocumentReferences Additional documents
      * @return $this
      * @optional
      */
-    public function setAdditionalDocumentReferences(array $additionalDocumentReferences)
+    public function setAdditionalDocumentReferences(array $additionalDocumentReferences = null)
     {
         $this->additionalDocumentReferences = $additionalDocumentReferences;
         return $this;
@@ -573,11 +574,11 @@ class Order implements XmlSerializable
     /**
      * Contract information
      * Reference to contract
-     * @param string $referenceID positive identification of the reference such as a unique identifier
+     * @param string|null $referenceID positive identification of the reference such as a unique identifier
      * @return self
      * @optional
      */
-    public function setContract($referenceID)
+    public function setContract($referenceID = null)
     {
         $this->contract = $referenceID;
         return $this;
@@ -638,11 +639,11 @@ class Order implements XmlSerializable
 
     /**
      * Originator party
-     * @param Party $originatorCustomerParty Information regarding the originator of the order
+     * @param Party|null $originatorCustomerParty Information regarding the originator of the order
      * @return $this
      * @optional
      */
-    public function setOriginatorCustomerParty(Party $originatorCustomerParty) {
+    public function setOriginatorCustomerParty(Party $originatorCustomerParty = null) {
         $this->originatorCustomerParty = $originatorCustomerParty;
         return $this;
     }
@@ -659,12 +660,12 @@ class Order implements XmlSerializable
 
     /**
      * Invoicee party
-     * @param Party $accountingCustomerParty
+     * @param Party|null $accountingCustomerParty
      * Information regarding the receiver of the invoice based on the order (Invoicee)
      * @return self
      * @optional
      */
-    public function setAccountingCustomerParty(Party $accountingCustomerParty)
+    public function setAccountingCustomerParty(Party $accountingCustomerParty = null)
     {
         $this->accountingCustomerParty = $accountingCustomerParty;
         return $this;
@@ -681,11 +682,11 @@ class Order implements XmlSerializable
 
     /**
      * Delivery information
-     * @param Delivery $delivery Delivery information
+     * @param Delivery|null $delivery Delivery information
      * @return self
      * @optional
      */
-    public function setDelivery(Delivery $delivery)
+    public function setDelivery(Delivery $delivery = null)
     {
         $this->delivery = $delivery;
         return $this;
@@ -702,11 +703,11 @@ class Order implements XmlSerializable
 
     /**
      * Terms of delivery
-     * @param DeliveryTerms $deliveryTerms Terms of delivery
+     * @param DeliveryTerms|null $deliveryTerms Terms of delivery
      * @return self
      * @optional
      */
-    public function setDeliveryTerms(DeliveryTerms $deliveryTerms)
+    public function setDeliveryTerms(DeliveryTerms $deliveryTerms = null)
     {
         $this->deliveryTerms = $deliveryTerms;
         return $this;
@@ -723,11 +724,11 @@ class Order implements XmlSerializable
 
     /**
      * Payment terms
-     * @param string $note Payment terms for the order described in text
+     * @param string|null $note Payment terms for the order described in text
      * @return self
      * @optional
      */
-    public function setPaymentTerms($note)
+    public function setPaymentTerms($note = null)
     {
         $this->paymentTerms = $note;
         return $this;
@@ -745,11 +746,11 @@ class Order implements XmlSerializable
 
     /**
      * Allowance and charge information
-     * @param AllowanceCharge[] $allowanceCharges Allowances and charges for the order
+     * @param AllowanceCharge[]|null $allowanceCharges Allowances and charges for the order
      * @return self
      * @optional
      */
-    public function setAllowanceCharges(array $allowanceCharges)
+    public function setAllowanceCharges(array $allowanceCharges = null)
     {
         $this->allowanceCharges = $allowanceCharges;
         return $this;
@@ -924,7 +925,9 @@ class Order implements XmlSerializable
 
         if ($this->validityPeriodEndDate !== null) {
             $writer->write([
-                Schema::CAC . 'ValidityPeriod' => [Schema::CBC . 'EndDate' => $this->validityPeriodEndDate->format('Y-m-d')]
+                Schema::CAC . 'ValidityPeriod' => [
+                    Schema::CBC . 'EndDate' => $this->validityPeriodEndDate->format('Y-m-d')
+                ]
             ]);
         }
 

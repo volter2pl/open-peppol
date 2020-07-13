@@ -77,9 +77,9 @@ class Price implements XmlSerializable
 
     /**
      * Item price base quantity
-     * @param double $baseQuantity
+     * @param double|null $baseQuantity
      * The actual quantity to which the price applies
-     * @param string $unitCode
+     * @param string|null $unitCode
      * Base quantity unit of measure - the unit of measure that applies to the base quantity
      *
      * @example 1, "C62"
@@ -90,7 +90,7 @@ class Price implements XmlSerializable
     public function setBaseQuantity($baseQuantity = 1.0, $unitCode = null)
     {
         if ($unitCode !== null) {
-            UnitCode::validate($unitCode);
+            UnitCode::verify($unitCode);
         }
         $this->baseQuantity = $baseQuantity;
         $this->unitCode = $unitCode;
@@ -109,11 +109,11 @@ class Price implements XmlSerializable
 
     /**
      * Price discount information
-     * @param AllowanceCharge $allowanceCharge Information on discounts connected to the price
+     * @param AllowanceCharge|null $allowanceCharge Information on discounts connected to the price
      * @return self
      * @optional
      */
-    public function setAllowanceCharge(AllowanceCharge $allowanceCharge)
+    public function setAllowanceCharge(AllowanceCharge $allowanceCharge = null)
     {
         $this->allowanceCharge = $allowanceCharge;
         return $this;
@@ -136,7 +136,7 @@ class Price implements XmlSerializable
         }
 
         if ($this->unitCode !== null) {
-            UnitCode::validate($this->unitCode);
+            UnitCode::verify($this->unitCode);
         }
     }
 

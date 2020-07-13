@@ -67,13 +67,13 @@ class ClassifiedTaxCategory implements XmlSerializable
 
     /**
      * Line TAX rate
-     * @param int $percent
+     * @param int|null $percent
      * The TAX percentage rate that applies to the line amount.
      * @example 25
      * @return self
      * @optional
      */
-    public function setPercent($percent)
+    public function setPercent($percent = null)
     {
         $this->percent = $percent;
         return $this;

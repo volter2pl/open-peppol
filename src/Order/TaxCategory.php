@@ -70,7 +70,7 @@ class TaxCategory implements XmlSerializable
 
     /**
      * TAX rate
-     * @param float $percent
+     * @param float|null $percent
      * The TAX rate, represented as percentage that applies to the document level allowance or charge.<br>
      * As this element is of data type percentage, please note that no %-sign should be used.<br>
      * To state 25 %, use value 25.00
@@ -78,7 +78,7 @@ class TaxCategory implements XmlSerializable
      * @return self
      * @optional
      */
-    public function setPercent($percent)
+    public function setPercent($percent = null)
     {
         $this->percent = $percent;
         return $this;

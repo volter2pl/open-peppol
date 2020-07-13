@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Volter\OpenPeppol\Dict;
 
 class TaxSchemeID

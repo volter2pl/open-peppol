@@ -87,15 +87,16 @@ class AdditionalItemProperty implements XmlSerializable
 
     /**
      * Item property code
-     * @param string $nameCode
+     * @param string|null $nameCode
      * Code for the item property according to a property code system
-     * @param string $listID
+     * @param string|null $listID
      * Name code list id.<br>
-     * An identifier for the code list used for the Name code, this is bilaterally agreed
+     * An identifier for the code list used for the Name code, this is bilaterally agreed<br>
+     * <b>Mandatory if $nameCode is set</b>
      * @return self
      * @optional
      */
-    public function setNameCode($nameCode, $listID)
+    public function setNameCode($nameCode = null, $listID = null)
     {
         $this->nameCode = $nameCode;
         $this->listID = $listID;
@@ -139,19 +140,22 @@ class AdditionalItemProperty implements XmlSerializable
 
     /**
      * Item property unit of measure
-     * @param float $valueQuantity
+     * @param float|null $valueQuantity
      * The unit of measure in which the property value is stated, if relevant.
      * May not be relevant when properties are descriptive
-     * @param string $unitCode
+     * @param string|null $unitCode
      * Value quantity unit of measure<br>
-     * The unit of measure that applies to the value quantity
+     * The unit of measure that applies to the value quantity<br>
+     * <b>Mandatory if $nameCode is set</b>
      * @example 10, "C62"
      * @return self
      * @optional
      */
-    public function setValueQuantity($valueQuantity, $unitCode)
+    public function setValueQuantity($valueQuantity = null, $unitCode = null)
     {
-        UnitCode::validate($unitCode);
+        if ($valueQuantity !== null) {
+            UnitCode::verify($unitCode);
+        }
         $this->valueQuantity = $valueQuantity;
         $this->unitCode = $unitCode;
         return $this;
@@ -169,12 +173,12 @@ class AdditionalItemProperty implements XmlSerializable
 
     /**
      * Property classification
-     * @param string $valueQualifier
+     * @param string|null $valueQualifier
      * Standardized and predefined classification of items properties
      * @return self
      * @optional
      */
-    public function setValueQualifier($valueQualifier)
+    public function setValueQualifier($valueQualifier = null)
     {
         $this->valueQualifier = $valueQualifier;
         return $this;
@@ -201,7 +205,7 @@ class AdditionalItemProperty implements XmlSerializable
         }
 
         if ($this->valueQuantity !== null) {
-            UnitCode::validate($this->unitCode);
+            UnitCode::verify($this->unitCode);
         }
     }
 

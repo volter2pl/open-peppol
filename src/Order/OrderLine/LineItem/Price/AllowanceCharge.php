@@ -59,11 +59,11 @@ class AllowanceCharge implements XmlSerializable
 
     /**
      * Item list price
-     * @param double $baseAmount The gross price of the item before subtracting discounts. E.g. list price
+     * @param double|null $baseAmount The gross price of the item before subtracting discounts. E.g. list price
      * @return self
      * @optional
      */
-    public function setBaseAmount($baseAmount)
+    public function setBaseAmount($baseAmount = null)
     {
         $this->baseAmount = $baseAmount;
         return $this;

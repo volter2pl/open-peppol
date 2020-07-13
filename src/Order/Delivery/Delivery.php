@@ -41,11 +41,11 @@ class Delivery implements XmlSerializable
 
     /**
      * Delivery location
-     * @param DeliveryLocation $deliveryLocation Delivery location
+     * @param DeliveryLocation|null $deliveryLocation Delivery location
      * @return self
      * @optional
      */
-    public function setDeliveryLocation(DeliveryLocation $deliveryLocation)
+    public function setDeliveryLocation(DeliveryLocation $deliveryLocation = null)
     {
         $this->deliveryLocation = $deliveryLocation;
         return $this;
@@ -62,11 +62,11 @@ class Delivery implements XmlSerializable
 
     /**
      * Requested delivery period
-     * @param RequestedDeliveryPeriod $requestedDeliveryPeriod Requested delivery period
+     * @param RequestedDeliveryPeriod|null $requestedDeliveryPeriod Requested delivery period
      * @return self
      * @optional
      */
-    public function setRequestedDeliveryPeriod(RequestedDeliveryPeriod $requestedDeliveryPeriod)
+    public function setRequestedDeliveryPeriod(RequestedDeliveryPeriod $requestedDeliveryPeriod = null)
     {
         $this->requestedDeliveryPeriod = $requestedDeliveryPeriod;
         return $this;
@@ -83,11 +83,11 @@ class Delivery implements XmlSerializable
 
     /**
      * Delivery party
-     * @param Party $deliveryParty Delivery party
+     * @param Party|null $deliveryParty Delivery party
      * @return self
      * @optional
      */
-    public function setDeliveryParty(Party $deliveryParty)
+    public function setDeliveryParty(Party $deliveryParty = null)
     {
         $this->deliveryParty = $deliveryParty;
         return $this;

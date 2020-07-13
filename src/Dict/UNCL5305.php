@@ -2,9 +2,13 @@
 
 namespace Volter\OpenPeppol\Dict;
 
+/**
+ * Class UNCL5305
+ * @package Volter\OpenPeppol\Dict
+ * @link https://test-docs.peppol.eu/poacc/upgrade-3/codelist/UNCL5305/
+ */
 class UNCL5305
 {
-
     /**
      * Vat Reverse Charge
      * Code specifying that the standard VAT rate is levied from the invoicee.

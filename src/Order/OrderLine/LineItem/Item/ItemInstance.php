@@ -36,11 +36,11 @@ class ItemInstance implements XmlSerializable
 
     /**
      * Item serial identification
-     * @param string $serialID An identifier that is specific to the items in the order line
+     * @param string|null $serialID An identifier that is specific to the items in the order line
      * @return self
      * @optional
      */
-    public function setSerialID($serialID)
+    public function setSerialID($serialID = null)
     {
         $this->serialID = $serialID;
         return $this;
@@ -59,13 +59,13 @@ class ItemInstance implements XmlSerializable
     /**
      * Item lot information
      * Information about the production lot which the order line items come from
-     * @param string $lotIdentificationID
+     * @param string|null $lotIdentificationID
      * Item lot identifier<br>
      * An identifier for the production lot which the order line items come from
      * @return self
      * @optional
      */
-    public function setLotIdentification($lotIdentificationID)
+    public function setLotIdentification($lotIdentificationID = null)
     {
         $this->lotIdentification = $lotIdentificationID;
         return $this;

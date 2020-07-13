@@ -46,12 +46,13 @@ class CommodityClassification implements XmlSerializable
 
     /**
      * Item classification code
-     * @param string $itemClassificationCode Commodity classification information
+     * @param string|null $itemClassificationCode Commodity classification information
      * A code for classifying the item by its type or nature. Classification codes are used to allow grouping<br>
      * of similar items for a various purposes e.g. public procurement (CPV), e-Commerce (UNSPSC) etc
-     * @param string $listID
+     * @param string|null $listID
      * Item classification identifier identification scheme identifier<br>
-     * The identification scheme identifier of the Item classification identifier
+     * The identification scheme identifier of the Item classification identifier<br>
+     * <b>Mandatory if $itemClassificationCode is set</b>
      * @param string|null $listVersionID
      * Item classification identifier version identification scheme identifier<br>
      * The identification scheme version identifier of the Item classification identifier
@@ -63,8 +64,12 @@ class CommodityClassification implements XmlSerializable
      * @example "9873242", "STI", "20.0602", "Office furniture"
      * @optional
      */
-    public function setItemClassificationCode($itemClassificationCode, $listID, $listVersionID = null, $name = null)
-    {
+    public function setItemClassificationCode(
+        $itemClassificationCode = null,
+        $listID = null,
+        $listVersionID = null,
+        $name = null
+    ) {
         $this->itemClassificationCode = $itemClassificationCode;
         $this->listID = $listID;
         $this->listVersionID = $listVersionID;

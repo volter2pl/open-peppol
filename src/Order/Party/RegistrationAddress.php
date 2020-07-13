@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Volter\OpenPeppol\Order\Party;
 
 use Volter\OpenPeppol\Dict\ISO3166;
@@ -40,13 +39,13 @@ class RegistrationAddress implements XmlSerializable
 
     /**
      * Legal registration address city name
-     * @param string $cityName
+     * @param string|null $cityName
      * Associates with the registered address of the party within<br>
      * a Corporate Registration Scheme. The name of a city, town, or village.
      * @return self
      * @optional
      */
-    public function setCityName($cityName)
+    public function setCityName($cityName = null)
     {
         $this->cityName = $cityName;
         return $this;
